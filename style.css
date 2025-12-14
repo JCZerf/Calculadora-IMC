@@ -1,13 +1,253 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: rgb(47, 0, 255);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 body {
-    background: linear-gradient(#000000 0%, #000000 33.33%, #041832 66.67%, #01080E 100%);
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.calculator-card,
+.tabela-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calculator-card h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-calcular {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-calcular:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-calcular:active {
+  transform: translateY(-1px);
+}
+
+.resultado {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeInUp 0.5s ease;
+}
+
+.resultado.hidden {
+  display: none;
+}
+
+.resultado h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.resultado #valor-imc {
+  color: #667eea;
+  font-weight: bold;
+}
+
+.resultado p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.tabela-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.tabela-imc {
+  display: grid;
+  gap: 2px;
+}
+
+.linha-tabela {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.linha-tabela.header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.linha-tabela:not(.header) {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+}
+
+.linha-tabela:not(.header):hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+/* Classes para classificação do IMC */
+.magreza-iii,
+.magreza-ii,
+.magreza-i {
+  color: #17a2b8;
+  background: rgba(23, 162, 184, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.adequado {
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.pre-obeso {
+  color: #ffc107;
+  background: rgba(255, 193, 7, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.obesidade-i,
+.obesidade-ii {
+  color: #fd7e14;
+  background: rgba(253, 126, 20, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.obesidade-iii {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Animação */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .calculator-card,
+  .tabela-card {
+    padding: 20px;
+  }
+
+  .calculator-card h1 {
+    font-size: 1.5rem;
+  }
+
+  .linha-tabela {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculator-card,
+  .tabela-card {
+    padding: 15px;
+  }
+
+  .form-group input,
+  .btn-calcular {
+    padding: 12px;
+  }
+
+  .linha-tabela {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
 }

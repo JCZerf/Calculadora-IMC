@@ -1,30 +1,91 @@
-<DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <button onclick="calcularImc()" class="container__botao">Calcular</button>
-        <h1>IMC	Classificação</h1>
-        <h2>ICMS Resultado</h2>
-        <title>IMC	Classificação</title>
-    </head>
-
-    <body>
-         <p>16 Magreza Grau III</p>
-                <p>16,0 a 16,9	Magreza Grau II</p>
-                    <p>17,0 a 18,4	Magreza Grau I</p>
-                        <p>18,5 a 24,9	Adequado</p>
-                        <p>25,0 a 29,9	Pré-Obeso</p>
-                 <p>30,0 a 34,9	Obesidade Grau I</p>
-             <p>35,0 a 39,9	Obesidade Grau II</p>
-            <p>40	Obesidade Grau III</p> 
-        
-                </div>
-            </div>
+  <body>
+    <div class="container">
+      <div class="calculator-card">
+        <h1>Calculadora de IMC</h1>
+        <div class="form-group">
+          <label for="altura">Altura (m):</label>
+          <input
+            type="number"
+            id="altura"
+            placeholder="Ex: 1.75"
+            step="0.01"
+            min="0.5"
+            max="2.5"
+          />
         </div>
-        <script src="app.js" defer></script>
-    </body>
-    
+        <div class="form-group">
+          <label for="peso">Peso (kg):</label>
+          <input
+            type="number"
+            id="peso"
+            placeholder="Ex: 70"
+            step="0.1"
+            min="20"
+            max="300"
+          />
+        </div>
+        <button onclick="calcularImc()" class="btn-calcular">
+          Calcular IMC
+        </button>
+
+        <div id="resultado" class="resultado hidden">
+          <h3>Seu IMC é: <span id="valor-imc"></span></h3>
+          <p id="classificacao-imc"></p>
+        </div>
+      </div>
+
+      <div class="tabela-card">
+        <h2>Tabela de Classificação</h2>
+        <div class="tabela-imc">
+          <div class="linha-tabela header">
+            <span>IMC</span>
+            <span>Classificação</span>
+          </div>
+          <div class="linha-tabela">
+            <span>Menor que 16</span>
+            <span class="magreza-iii">Magreza Grau III</span>
+          </div>
+          <div class="linha-tabela">
+            <span>16,0 a 16,9</span>
+            <span class="magreza-ii">Magreza Grau II</span>
+          </div>
+          <div class="linha-tabela">
+            <span>17,0 a 18,4</span>
+            <span class="magreza-i">Magreza Grau I</span>
+          </div>
+          <div class="linha-tabela">
+            <span>18,5 a 24,9</span>
+            <span class="adequado">Adequado</span>
+          </div>
+          <div class="linha-tabela">
+            <span>25,0 a 29,9</span>
+            <span class="pre-obeso">Pré-Obeso</span>
+          </div>
+          <div class="linha-tabela">
+            <span>30,0 a 34,9</span>
+            <span class="obesidade-i">Obesidade Grau I</span>
+          </div>
+          <div class="linha-tabela">
+            <span>35,0 a 39,9</span>
+            <span class="obesidade-ii">Obesidade Grau II</span>
+          </div>
+          <div class="linha-tabela">
+            <span>40 ou mais</span>
+            <span class="obesidade-iii">Obesidade Grau III</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
 </html>
